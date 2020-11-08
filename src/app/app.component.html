@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+<div class="container">
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div class="container main">
+      <div class="card">
+        <div class="card-header" align="center">
+            <h2>My TODO APP</h2><br>
+            <div>
+              <input type="text" id="todoTitle" style="width: 70%;" placeholder="Enter todo" [(ngModel)]="todoTitle"/>
+              <button class="btn btn-success" (click)="addActiveTodo()">{{buttonName}}</button>
+            </div>
+        </div>
+        <div class="card-body" style="max-height: 75vh;overflow-y: scroll;">
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-success" *ngFor="let todo of activeTodos;index as i">
+              <span>{{todo.title}}</span>
+              <i title="DELETE" (click)="deleteActiveTodo(i)" class="fa fa-times-circle" style="font-size:18px;color:red;float: right;margin-left:5px;"></i>
+              <i title="DONE" (click)="addCompletedTodo(todo,i)" class="fa fa-check" style="font-size:18px;color:green;float: right;margin-left:5px;"></i>
+              <i title="EDIT" (click)="editActiveTodo(todo.title,i);" class="fa fa-edit" style="font-size:18px;color:blue;float: right;"></i>
+            </li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-danger" *ngFor="let todo of completedTodos;index as i">
+              <span>{{todo.title}}</span>
+              <i title="DELETE" (click)="deleteCompletedTodo(i)" class="fa fa-times-circle" style="font-size:18px;color:red;float: right;margin-left:5px;"></i>
+              <i title="REDO" (click)="redoCompletedTodo(todo,i)" class="fa fa-refresh" style="font-size:18px;color:green;float: right;"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"><br><br><label>Enter userId:</label><input type="text" [(ngModel)]="userId" (ngModelChange)="ngOnInit();"/></div>
+</div>
+</div>
+</body>
