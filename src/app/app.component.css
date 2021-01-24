@@ -13,11 +13,14 @@ input {
     height: 40px;
     border: 2px solid dodgerblue;
     border-radius: 5px;
+    padding-left: 7px;
 }
 button {
     margin-left: 10px;
     width: 100px;
     margin-bottom: 5px;
+    background-color: black;
+    color:white;
 }
 i:hover {
     cursor: pointer;
